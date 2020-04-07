@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<meta charset="utf-8"/>
+	<head>
+		<title>Homework 6</title>
+
+		<style>
+			#page{
+				margin: auto;
+				width: 900px
+			}
+
+			.tab {
+				position: fixed;
+  				float: left;
+  				background-color: #f1f1f1;
+  				border-radius: 3px;
+  				border: 1px solid grey;
+  				width: 130px;
+  				height: 70px;
+			}
+
+			.tab button {
+  				display: block;
+  				border: none;
+  				background-color: inherit;
+  				color: black;
+  				padding: 6px 5px;
+  				width: 100%;
+  				height: 50%;
+  				outline: none;
+  				text-align: center;
+  				font-family: Georgia, serif;
+  				font-size: 13px;
+			}
+
+			.tab button:hover {
+				color: white;
+  				background-color: #29a329;
+
+			}
+
+			.tab button.active {
+  				background-color: grey;
+  				color: white;
+			}
+
+			.tabcontent {
+  				float: left;
+  				margin-left: 150px;
+  				width: 70%;
+  				height: 900px;
+  				padding-top: 0px;
+			}
+
+			.tabcontent h1{
+				text-align: center;
+				font-size: 25px;
+			}
+
+			.container {
+  				width: 100%;
+  				height: 230px;
+  				padding: 0px;
+			}
+
+			#slide {
+				text-decoration: none;
+  				background-size: 100% 100%;
+  				width: 360px;
+  				height: 230px;
+  				float: left;
+			}
+
+			#cloud {
+				width: 250px;
+				height: 230px;
+  				float: right;
+  				background-color: #f1f1f1;
+			}
+
+			.card {
+				border-top: 1px dotted #ccc;
+				height: 270px;
+				padding: 5px 3px;
+				overflow: hidden;
+			}
+
+			.card a{
+				margin-left: 2px;
+				margin-right: 2px;
+				display: block;
+				float: left;
+				text-decoration: none;
+				color: black;
+				width:150px;
+				height: 100%;
+				background-color: #f1f1f1;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+			}
+
+			.card h1{
+				margin: auto;
+				width: 120px;
+				font-size: 12px;
+				margin-top:5px;
+				margin-bottom: 10px;
+			}
+
+			.card p{
+				margin: auto;
+				text-align: center;
+				width: 120px;
+				font-size: 11px;
+     			overflow: hidden;
+  				display: -webkit-box;
+  				-webkit-line-clamp: 5;
+  				-webkit-box-orient: vertical;
+			}
+
+			#searchform{
+				display: block;
+				margin: auto;
+				border-radius: 5px;
+				width: 90%;
+				height: 100px;
+				background-color: #f1f1f1;
+				padding: 20px 15px;
+				font-size: 13px;
+			}
+			
+			.firstline input{
+				width: 100px;
+				height: 13px; 
+				margin-left: 18px;
+				
+			}
+
+			.secondline select{
+				width: 110px;
+			}
+
+			.thirdline button{
+				margin-left: 8px;
+				margin-right: 8px;
+				width: 90px;
+				height: 25px;
+				font-size: 12px;
+				border-radius: 2px;
+				background-color: #E8E8E8;
+				border: none;
+			}
+
+			.thirdline button:hover{
+				background-color: #29a329;
+				color: white;
+			}
+
+			#resultCard:{
+				display: none;
+			}
+
+			#resultCard:hover{
+				width: 100%;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			}
+
+			.info{
+				display: none;
+				padding-left: 10px; 
+				padding-right: 10px; 
+				margin-top: 3px; 
+				font-size:13px;
+			}
+
+			.card_dscpt{
+				padding-left: 10px; 
+				padding-right: 20px;
+				font-size: 13px; 
+				margin-top: 3px
+				
+			}
+
+			.card_dscpt p{
+				white-space: nowrap;
+  				overflow: hidden; 
+  				text-overflow: ellipsis;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id = page >
+			<div class = tab>
+				<button class="tablinks" id = default onclick="select(event, 'news')">Google News</button>
+  				<button class="tablinks" onclick="select(event, 'search')">Search</button>
+			</div> 		
+			<div id = news class="tabcontent">
+				<div class = container>
+					<a id = slide target = "_tab">
+						<div class = content style = "background-color: rgb(0,0,0,0.4); height: 96px; margin-top: 134px;">
+							<h1 id = slideHeading style = "color: white; height: 44%; overflow: hidden; font-size: 15px ; margin: 0px; padding: 5px 4%;"> </h1>
+							<p id = slideDscpt style = "color: white; height: 44%; overflow: hidden; font-size: 10px; margin: 0px; padding: 5px 8%; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"> </p>
+						</div>
+					</a>
+
+					<div id = cloud >
+
+					</div>
+				</div>
+				
+				<h1 style = "margin-top: 35px; margin-bottom: 3px">CNN</h1>
+				<div class = card id = cnn>
+					<a target = "_tab">
+						<img style = "width: 100%; height: 90px; border-radius: 5px; object-fit: cover;">
+						<h1></h1><p></p>
+					</a>
+					<a target = "_tab">
+						<img style = "width: 100%; height: 90px; border-radius: 5px; object-fit: cover;">
+						<h1></h1><p></p>
+					</a>
+					<a target = "_tab">
+						<img style = "width: 100%; height: 90px; border-radius: 5px; object-fit: cover;">
+						<h1></h1><p></p>
+					</a>
+					<a target = "_tab">
+						<img style = "width: 100%; height: 90px; border-radius: 5px; object-fit: cover;">
+						<h1></h1><p></p>
+					</a>
+					<script></script>
+				</div>
+
+				<h1 style = "margin-top: 35px; margin-bottom: 3px">FOX</h1>
+				<div class = card id = fox style = "margin-bottom: 100px">
+					<a target = "_tab">
+						<img style = "width: 100%; height: 90px; border-radius: 5px; object-fit: cover;">
+						<h1></h1><p></p>
+					</a>
+					<a target = "_tab">
+						<img style = "width: 100%; height: 90px; border-radius: 5px; object-fit: cover;">
+						<h1></h1><p></p>
+					</a>
+					<a target = "_tab">
+						<img style = "width: 100%; height: 90px; border-radius: 5px; object-fit: cover;">
+						<h1></h1><p></p>
+					</a>
+					<a target = "_tab">
+						<img style = "width: 100%; height: 90px; border-radius: 5px; object-fit: cover;">
+						<h1></h1><p></p>
+					</a>
+				</div>
+			</div>
+
+			<div id = search class="tabcontent">
+				<form id = searchform>
+					<div style = "width: 100%;" class = firstline>
+						<label for="keyword">Keyword<span style ="color: red">*</span></label><input type="text" id="keyword" name="keyword" required>
+						<label for="from" style = "margin-left: 36px">From<span style ="color: red">*</span></label><input type="date" id="from" name="from" required>
+						<label for="to" style = "margin-left: 36px">To<span style ="color: red">*</span></label><input type="date" id="to" name="to" required>
+					</div>
+					<div style = "width: 70%; margin:auto; margin-top: 20px" class = secondline>
+						<label style ="margin-right: 12px" for="category">Category</label>
+						<select id = "category" name = "category" value ="All" onclick="getSource()">
+																<option value="all">All</option>
+																<option value="business">Business</option>
+																<option value="entertainment">Entertainment</option>
+																<option value="general">General</option>
+																<option value="health">Health</option>
+																<option value="science">Science</option>
+																<option value="sports">Sports</option>
+																<option value="technology">Technology</option>
+						</select>
+						
+						<label style ="margin-right: 12px; margin-left: 15px;" for="source">Source</label>
+						<select id = "source" name = "source" value ="all"><option value="all">all</option>
+						</select>
+					</div>
+					
+					<div style ="width: 40%; margin:auto; margin-top: 20px" class = thirdline>
+						<button type="button" form = searchform onclick = "search_func(this.form)" >Search</button>
+						<button type="button" onclick = "clear_func()" >Clear</button>
+					</div>
+				</form>
+
+				<div id = result style ="width: 90%; margin: auto; margin-top: 20px; display: none; margin-bottom: 10px">
+					
+					<div id = noResults style = "display: none; text-align: center">No Results</div>
+					
+					<div id = resultCard style = "overflow: hidden; background-color: #f1f1f1; height: 110px; text-decoration: none; color: black; margin-top: 8px; border-radius: 5px" onclick="unfold(event)">
+						
+						<div style = "width: 20%; height: 100%; float:left">
+							<img id = image src = "#" style = "width: 76%; height: 80px; margin-top: 15px; margin-right: 15%; margin-left: 15%">
+						</div>
+
+
+
+						<div style = "float: right; width: 80%;">
+							<div style="float: left; width: 400px; padding-left: 10px; padding-right: 20px; margin-top: 12px">
+								<H1 id = Title style = "text-align: left; font-size: 16px"></H1>
+							</div>
+							<div id = exit style = "width: 15px; height: 15px;float: right; padding-left: 0px; display: none;
+													padding-right: 0px; 
+													margin-top: 0px; margin-right: 0px" 
+													onclick = "fold(event)" >&#10005;</div> 
+							
+							<div class = info id = Author ></div>
+							<div class = info id = Source ></div>
+							<div class = info id = Date><b>Date: </b></div>
+
+							<div class = card_dscpt style = "white-space: nowrap; overflow: hidden;text-overflow: ellipsis; ">
+								<p id = Description style = "margin-top: 0px; margin-bottom: 0px"></p>
+							</div>
+
+							<div class = info style="padding-left: 10px; padding-right: 20px; margin-top: 3px; font-size: 13px"><a id = toPost href = "#" target = "_tab">See Original Posts</a>
+							</div>	
+						</div>
+					</div>
+					
+				</div>
+				<div id = showMore style = "text-align: center; display: none"><button type="button" onclick="showRest()">Show More</button></div>			
+			</div>	
+		<script src="https://d3js.org/d3.v4.js"></script>
+		
+		<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+		
+		<script type="text/javascript">
+			
+			var showFive = true;
+			var cardToAdd = [];
+
+			function Reset(){
+				var options = document.getElementById("result")
+				var child = options.lastElementChild;  
+				var num = options.children.length
+        		while (child && num>2) { 
+            		options.removeChild(child); 
+            		child = options.lastElementChild; 
+            		num-=1;
+            	}
+			}
+			
+			function loadJSON(url,funct,param){
+				var xhr = new XMLHttpRequest();
+  				xhr.open("GET",url,true);
+  				xhr.send();  				
+  				xhr.onload = function() {
+  					var responseObj = xhr.responseText;
+  					var json = JSON.parse(responseObj);
+  					// console.log(json);
+  					funct(json,param);
+				};
+ 			}
+
+ 			function slide_func(data){
+ 				var slides = new Array(5);
+ 				for(var i = 0; i < 5; i++){
+ 					slides[i] = new Array(4);
+ 					slides[i][0] = data['articles'][i]['url'];
+ 					slides[i][1] = "url("+data['articles'][i]['urlToImage']+")";
+ 					slides[i][2] = data['articles'][i]['title'];
+ 					slides[i][3] = data['articles'][i]['description'];
+ 
+ 				}				
+ 				var x = 0;
+ 				function loadData(){
+ 					document.getElementById("slide").href = slides[x][0];
+ 					document.getElementById("slide").style['background-image']= slides[x][1];
+ 					document.getElementById("slideHeading").innerHTML = slides[x][2];
+ 					document.getElementById("slideDscpt").innerHTML = slides[x][3];
+ 					if(x < 4){
+ 						x++;
+ 					}else{
+ 						x = 0;
+ 					}
+ 				}
+ 				loadData();
+ 				setInterval(loadData, 5000);
+ 			}
+
+ 			function cloud_func(data){
+ 				var frequency = {};
+ 				var words = Object.keys(data);
+ 				for(var i = 0; i < words.length; i++){
+ 					frequency[words[i]] = data[words[i]];
+ 				}
+ 			
+ 				wordsSorted = Object.keys(frequency).sort(function(a,b){return frequency[b]-frequency[a]});
+
+				var myWords = [];
+				for(var i = 0; i < 30; i++){
+					myWords.push({word: wordsSorted[i], size: frequency[wordsSorted[i]]});
+				}
+
+				var layout = d3.layout.cloud()
+    			.size([250, 230])
+    			.words(myWords.map(function(d) { return {text: d.word, size:d.size}; }))
+    			.padding(1)
+    			.rotate(function() { return ~~(Math.random() * 2) * 90; })
+    			.font("Impact")
+    			.fontSize(function(d) { return Math.min(Math.log(d.size)*15,32); })
+    			.on("end", draw);
+
+				layout.start();
+
+				function draw(words) {
+  					d3.select("#cloud").append("svg")
+      				.attr("width", layout.size()[0])
+      				.attr("height", layout.size()[1])
+    				.append("g")
+      				.attr("transform", "translate(" + layout.size()[0]/2  + "," + layout.size()[1]/2  + ")")
+    				.selectAll("text")
+      				.data(words)
+    				.enter().append("text")
+      				.style("font-size", function(d) { return d.size + "px"; })
+      				.style("font-family", "Impact")
+      				.attr("text-anchor", "middle")
+      				.attr("transform", function(d) {
+        			return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";})
+      				.text(function(d) { return d.text; });
+				}
+
+ 			}
+
+ 			function card_func(data, id){
+ 				var cards = document.getElementById(id).children;
+ 				for(var i = 0; i < 4; i++){
+ 					cards[i].href = data['articles'][i]['url'];
+ 					var ele = cards[i].children;
+ 					ele[0].src = data['articles'][i]['urlToImage'];
+ 					ele[1].innerHTML  = data['articles'][i]['title'];
+ 					ele[2].innerHTML  = data['articles'][i]['description'];
+ 				}
+ 			}
+
+ 			function select(evt, buttonID) {
+  				var i, tabcontent, tablinks;
+  				
+  				tabcontent = document.getElementsByClassName("tabcontent");
+  				for (i = 0; i < tabcontent.length; i++) {
+    				tabcontent[i].style.display = "none";
+  				}
+
+  				tablinks = document.getElementsByClassName("tablinks");
+  				for (i = 0; i < tablinks.length; i++) {
+    				tablinks[i].className = tablinks[i].className.replace(" active", "");
+  				}
+  				
+  				document.getElementById(buttonID).style.display = "block";
+  				evt.currentTarget.className += " active";
+			}
+
+			function getSource(){
+				var form = document.getElementById("searchform");
+				var category = form.category.value;
+				url = "/Source/" + category;
+				loadJSON(url,drop_down);		
+			}
+
+			function drop_down(data){
+				var options = document.getElementById("source")
+				var child = options.lastElementChild;  
+        		while (child) { 
+            		options.removeChild(child); 
+            		child = options.lastElementChild; 
+            	}
+
+            	var all = document.createElement("option");
+            	all.value = "all";
+            	all.innerHTML = "all"
+            	options.appendChild(all);
+
+				for(var i = 0; i < data['sources'].length; i++){
+					var source = data['sources'][i];
+					var option = document.createElement("option");
+					option.value = source["id"];
+					option.innerHTML = source["name"];
+					options.appendChild(option);
+				}
+			}
+
+			function search_func(form){
+				console.log(document.getElementById("searchform").reportValidity());
+				if(document.getElementById("searchform").reportValidity()){
+					selected = document.getElementById("resultCard");
+				selected.style.height = "110px";
+				show = selected.children[1].children;
+				console.log(show);
+				show[1].style.display = "none";
+				show[2].style.display = "none";				
+				show[3].style.display = "none";
+				show[4].style.display = "none";
+
+				show[5].style['text-overflow'] = "ellipsis";
+				show[5].style['white-space'] = "nowrap";
+				show[5].style['overflow'] = "hidden";
+				show[6].style.display = "none";
+					var keyword = form.keyword.value;
+					var from = form.from.value;
+					var to = form.to.value;
+					var category = form.category.value;
+					var source = form.source.value;
+					if(new Date(from).getTime() > new Date(to).getTime()){
+						alert("Incorrect Time");
+						return
+					}
+					document.getElementById("result").style.display = "block";
+					url = "/Search/"+keyword+"/"+source+"/"+from+"/"+to;
+					loadJSON(url, display_news);
+				}else{
+					return
+				}				
+			}
+
+			function today(){
+				var form = document.getElementById("searchform");
+				var today = new Date();
+				form.from.valueAsDate = today;
+				form.to.valueAsDate = today;
+				form.from.setAttribute("max", form.to.value);
+				form.to.setAttribute("max", form.to.value);			
+
+			}
+			
+			function clear_func(){
+				var form = document.getElementById("searchform");
+				var today = new Date();
+				form.keyword.value = "";
+				form.from.valueAsDate = today;
+				form.to.valueAsDate = today;
+				form.category.value = "all";
+				form.source.value = "all";
+				document.getElementById("result").style.display = "none";
+				document.getElementById("noResults").style.display = "none"
+				document.getElementById("showMore").style.display = "none";
+				selected = document.getElementById("resultCard");
+				selected.style.height = "110px";
+				show = selected.children[1].children;
+				console.log(show);
+				show[1].style.display = "none";
+				show[2].style.display = "none";				
+				show[3].style.display = "none";
+				show[4].style.display = "none";
+
+				show[5].style['text-overflow'] = "ellipsis";
+				show[5].style['white-space'] = "nowrap";
+				show[5].style['overflow'] = "hidden";
+				show[6].style.display = "none";
+				Reset();
+			}
+
+			function display_news(data){
+				document.getElementById('exit').addEventListener('click',function (event){
+   					event.stopPropagation();
+				});
+
+				cardToAdd = [];
+
+				if(data['articles'] === undefined){
+					document.getElementById("resultCard").style.display = "none";
+					alert(data['message'])
+					return
+				}
+				
+				document.getElementById("result").style.display = "block";
+				Reset();
+				if(data['articles'].length == 0){
+					document.getElementById("noResults").style.display = "block";
+					document.getElementById("resultCard").style.display = "none";
+					document.getElementById("showMore").style.display = "none";
+					Reset();
+				}
+
+				if(data['articles'].length > 0){
+					var first = data['articles'][0];
+					document.getElementById("image").setAttribute("src", first['urlToImage']);
+					document.getElementById("Title").innerHTML = first['title'];
+					document.getElementById('Author').innerHTML = "<b>Author: </b>" + first['author']['name'];
+					document.getElementById('Source').innerHTML = "<b>Source: </b>" + first['source']['name'];
+					document.getElementById('Date').innerHTML =  "<b>Date: </b>"+ first['publishedAt'].slice(0, 10);
+					document.getElementById("Description").innerHTML = first['description'];
+					document.getElementById("toPost").setAttribute("href", first['url']);
+				
+					var allCards = document.getElementById("result");
+					var firstCard = document.getElementById("resultCard");
+					
+					for(var i = 1; i < Math.min(data["articles"].length, 15); i++){
+						var news = data['articles'][i];
+						var cln = firstCard.cloneNode(true);
+						var cldrn = cln.children;
+						cldrn[0].firstElementChild.setAttribute("src", news['urlToImage'])
+						var grdcldrn = cldrn[1].children;
+						grdcldrn[0].firstElementChild.innerHTML = news['title'];
+						grdcldrn[1].addEventListener('click',function (event){
+   									event.stopPropagation();
+						});
+						grdcldrn[2].innerHTML = "<b>Author: </b>" + news['author'];
+						grdcldrn[3].innerHTML = "<b>Source: </b>" + news['source']['name'];
+						grdcldrn[4].innerHTML = "<b>Date: </b>" + news['publishedAt'].slice(0, 10);
+						grdcldrn[5].innerHTML = news['description'];
+						grdcldrn[6].setAttribute("href", news['url']);
+						cardToAdd.push(cln);
+					}
+
+					console.log(cardToAdd);
+					if(cardToAdd.length>5){
+						document.getElementById("showMore").style.display = "block";
+						for(var i = 0; i < 4; i++){
+							allCards.appendChild(cardToAdd[i]);
+						}
+					}else{
+						document.getElementById("showMore").style.display = "none";
+						for(var i = 0; i< cardToAdd.length; i++){
+							allCards.appendChild(cln);
+						}
+					}
+					document.getElementById("noResults").style.display = "none";
+					document.getElementById("resultCard").style.display = "block";
+					console.log(document.getElementById("result"));
+				}
+
+				
+			}
+			
+			function showRest(){
+				var allCards = document.getElementById("result");
+				if(showFive){
+					showFive = false;
+					for(var i = 4; i < cardToAdd.length; i++){
+						allCards.appendChild(cardToAdd[i]);
+					}
+					document.getElementById("showMore").firstElementChild.innerHTML = "Show Less";
+				}else{
+					showFive = true;
+					var num = cardToAdd.length;
+					var child = allCards.lastElementChild;  
+        			while (child && num>4) { 
+            			allCards.removeChild(child); 
+            			child = allCards.lastElementChild; 
+            			num-=1;
+            		}
+					document.getElementById("showMore").firstElementChild.innerHTML = "Show More";	
+				}
+			}
+
+			function unfold(evt){
+				var selected = evt.currentTarget;
+				selected.style.height = "200px";
+				show = selected.children[1].children;
+				show[1].style.display = "block";
+				show[2].style.display = "block";				
+				show[3].style.display = "block";
+				show[4].style.display = "block";
+				console.log(show[5]);
+				show[5].style['text-overflow'] = "none";
+				show[5].style['white-space'] = "none";
+				show[5].style.overflow = "none";
+				
+				show[6].style.display = "block";
+			}
+
+			function fold(evt){
+				var selected = evt.currentTarget.parentElement.parentElement;
+				selected.style.height = "110px";
+				show = selected.children[1].children;
+				console.log(show);
+				show[1].style.display = "none";
+				show[2].style.display = "none";				
+				show[3].style.display = "none";
+				show[4].style.display = "none";
+
+				show[5].style['text-overflow'] = "ellipsis";
+				show[5].style['white-space'] = "nowrap";
+				show[5].style['overflow'] = "hidden";
+				show[6].style.display = "none";
+			}
+
+			document.getElementById("default").click();
+			loadJSON('/headline',slide_func);
+			loadJSON('/CNN_headline',card_func,"cnn");
+			loadJSON('/FOX_headline',card_func,"fox");
+			loadJSON('/word_cloud',cloud_func);
+			today();
+			getSource();
+
+	</script>
+		
+	</body>
+
+</html>
